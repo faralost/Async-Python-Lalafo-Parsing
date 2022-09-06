@@ -4,9 +4,9 @@ from datetime import datetime
 from parse_lalafo import get_json_for_rental_estate_items_by_category, get_json_for_item_details
 
 
-def collecting_result_data(category_id, per_page):
+async def collecting_result_data(client, category_id, per_page):
     start = time.time()
-    response_data = get_json_for_rental_estate_items_by_category(category_id=category_id, per_page=per_page)
+    response_data = await get_json_for_rental_estate_items_by_category(client, category_id=category_id, per_page=per_page)
     end = time.time()
     print(f'finished request for category_id={category_id} in {end - start} seconds...')
     print(f'ok got {len(response_data["items"])} items from lalafo category_id={category_id}')
@@ -19,7 +19,7 @@ def collecting_result_data(category_id, per_page):
             images.append(image['original_url'])
 
         detail_start = time.time()
-        detail = get_json_for_item_details(item_id=item['id'])
+        detail = await get_json_for_item_details(client, item_id=item['id'])
         detail_end = time.time()
         print(f'finished detail request for item_id={item["id"]} in {detail_end - detail_start} seconds...')
 
@@ -45,6 +45,3 @@ def collecting_result_data(category_id, per_page):
         })
 
     return result
-
-
-print(collecting_result_data(category_id=2031, per_page=5))
