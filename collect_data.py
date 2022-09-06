@@ -3,8 +3,6 @@ from datetime import datetime
 
 from parse_lalafo import get_json_for_rental_estate_items_by_category, get_json_for_item_details
 
-CATEGORY_IDS = [2046, 2031, 2038, 2055, 5301, 2044, 2045, 2033, 2034, 2039, 2064, 5299, ]
-
 
 def collecting_result_data(category_id, per_page):
     start = time.time()
@@ -42,7 +40,7 @@ def collecting_result_data(category_id, per_page):
             'phone_number': item['mobile'],
             'title': item['title'],
             'description': item['description'],
-            'square': float(square),
+            'square': square,
             'add_from': add_from,  # риэлтор или хозяин
         })
 
