@@ -2,8 +2,6 @@
 
 Script for parsing ads from site lalafo.kg by categories.
 
-Synchronous parsing with requests for 5 categories and 1 object per page took an average of 30 seconds. In the asynchronous version, the same script completes in an average of 3 seconds.
-
 You can get category ids and request url for api from devtools of your browser:
 ![img.png](static/img.png)
 
